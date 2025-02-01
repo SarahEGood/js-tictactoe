@@ -23,11 +23,14 @@ boxes.forEach(box => {
     box.className = 'card';
     box.addEventListener('click', function handleClick(event) {
         let selectedBox = event.target;
-        selectedBox.innerHTML = 'X';
-        selectedBox.classList.add('player');
-        winCheck();
-        computerTurn();
-        winCheck('computer');
+        if (!selectedBox.classList.contains('player') && !selectedBox.classList.contains('computer')
+            && !(document.getElementById('results').innerHTML.trim() != "")) {
+            selectedBox.innerHTML = 'X';
+            selectedBox.classList.add('player');
+            winCheck();
+            computerTurn();
+            winCheck('computer');
+        }
     })
 });
 
